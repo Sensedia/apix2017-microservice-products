@@ -11,10 +11,5 @@ import java.util.List;
 public interface IProductRepository extends MongoRepository<Product, String> {
 
     List<Product> findProductsByCategoryId(String categoryId);
-
-    @Query("SELECT Distinct p.category FROM Product p")
-    List<String> findCategory();
-
-
 }
 

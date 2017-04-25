@@ -30,10 +30,4 @@ public class ProductController{
         List<Product> products = repository.findProductsByCategoryId(id);
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
-
-    @RequestMapping(value = "/categories", method = RequestMethod.GET)
-    public ResponseEntity<List<String>> geCategories(){
-        List<String> products = repository.findCategory();
-        return new ResponseEntity<>(products, HttpStatus.OK);
-    }
 }
