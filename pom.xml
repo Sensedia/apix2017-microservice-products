@@ -6,7 +6,7 @@
     <groupId>com.sensedia.apix</groupId>
     <artifactId>apix-products</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>apix-products</name>
     <description>Apix</description>
