@@ -22,9 +22,9 @@ public class Notification {
 	@GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
 	public String id;
 
-	public String product;
-	public String senderId;
-	public String callback;
+	private String product;
+	private String senderId;
+	private String callback;
 
 	public Notification() {
 	}
