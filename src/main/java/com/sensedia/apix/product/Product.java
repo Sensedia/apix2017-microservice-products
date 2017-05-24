@@ -2,16 +2,20 @@ package com.sensedia.apix.product;
 
 import java.io.Serializable;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.Table;
+
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Created by renanpetronilho on 23/04/17.
  */
-
-@Document(collection = "DOC_PRODUCT")
+@Entity
+@Table(name = "T_PRODUCT")
 public class Product implements Serializable {
 
 	@Id
@@ -20,8 +24,12 @@ public class Product implements Serializable {
 	private String department;
 	private String category;
 	private String subCategory;
+
+	@Lob
 	private Price price;
+
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@Lob
     private String image;
 
 	public String getId() {

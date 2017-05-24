@@ -1,11 +1,14 @@
 package com.sensedia.apix.product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -21,8 +24,14 @@ public class ProductController{
     private IProductRepository repository;
 
     @RequestMapping(value = "/products", method = RequestMethod.GET)
-    public ResponseEntity<List<Product>> getAll(Pageable pageable){
-        List<Product> products = repository.findAll(pageable).getContent();
+    @ResponseBody
+    public ResponseEntity<List<Product>> getAll(@RequestParam(value = "name", required = false) String name,Pageable pageable){
+        List<Product> products;
+        if(Objects.nonNull(name)) {
+            products = repository.findProductsByNameLike(name);
+        }else {
+            products = repository.findAll(pageable).getContent();
+        }
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
@@ -52,6 +61,4 @@ public class ProductController{
         }
         return new ResponseEntity<>(new ProductImage(product.getImage()), HttpStatus.OK);
     }
-
-
 }
