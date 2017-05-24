@@ -19,6 +19,6 @@ public class NotificiationMonitor {
 	@AfterReturning("execution(* com.sensedia.apix.product.ProductController.postProduct(..))")
 	public void logServiceAccess(JoinPoint joinPoint) {
 		System.out.println("Completed: " + joinPoint);
-		notificationService.checkProduct();
+		new Thread(() -> notificationService.checkProduct()).start();
 	}
 }
