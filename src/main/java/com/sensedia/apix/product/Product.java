@@ -1,13 +1,13 @@
 package com.sensedia.apix.product;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
-
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -24,13 +24,16 @@ public class Product implements Serializable {
 	private String department;
 	private String category;
 	private String subCategory;
+	private BigDecimal value;
+	private String installment;
+	private Integer loyalty;
+	private Integer installmentNumber;
+	private BigDecimal installmentValue;
+	private Boolean available;
 
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@Lob
-	private Price price;
-
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-	@Lob
-    private String image;
+	private String image;
 
 	public String getId() {
 		return id;
@@ -72,14 +75,6 @@ public class Product implements Serializable {
 		this.subCategory = subCategory;
 	}
 
-	public Price getPrice() {
-		return price;
-	}
-
-	public void setPrice(Price price) {
-		this.price = price;
-	}
-
 	public String getImage() {
 		return image;
 	}
@@ -88,9 +83,59 @@ public class Product implements Serializable {
 		this.image = image;
 	}
 
+	public BigDecimal getValue() {
+		return value;
+	}
+
+	public void setValue(BigDecimal value) {
+		this.value = value;
+	}
+
+	public String getInstallment() {
+		return installment;
+	}
+
+	public void setInstallment(String installment) {
+		this.installment = installment;
+	}
+
+	public Integer getLoyalty() {
+		return loyalty;
+	}
+
+	public void setLoyalty(Integer loyalty) {
+		this.loyalty = loyalty;
+	}
+
+	public Integer getInstallmentNumber() {
+		return installmentNumber;
+	}
+
+	public void setInstallmentNumber(Integer installmentNumber) {
+		this.installmentNumber = installmentNumber;
+	}
+
+	public BigDecimal getInstallmentValue() {
+		return installmentValue;
+	}
+
+	public void setInstallmentValue(BigDecimal installmentValue) {
+		this.installmentValue = installmentValue;
+	}
+
+	public Boolean getAvailable() {
+		return available;
+	}
+
+	public void setAvailable(Boolean available) {
+		this.available = available;
+	}
+
 	@Override
 	public String toString() {
 		return "Product{" + "id='" + id + '\'' + ", name='" + name + '\'' + ", department='" + department + '\''
-				+ ", category='" + category + '\'' + ", subCategory='" + subCategory + '\'' + ", price=" + price + '}';
+				+ ", category='" + category + '\'' + ", subCategory='" + subCategory + '\'' + ", value=" + value
+				+ ", installment='" + installment + '\'' + ", loyalty=" + loyalty + ", installmentNumber="
+				+ installmentNumber + ", installmentValue=" + installmentValue + ", available=" + available + '}';
 	}
 }
