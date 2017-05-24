@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by renanpetronilho on 23/04/17.
@@ -25,9 +26,32 @@ public class ProductController{
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/categories/{categoryId}/products", method = RequestMethod.GET)
-    public ResponseEntity<List<Product>> getAll(@PathVariable("categoryId") String id){
-        List<Product> products = repository.findProductsByCategoryId(id);
-        return new ResponseEntity<>(products, HttpStatus.OK);
+    @RequestMapping(value = "/products/{productId}", method = RequestMethod.GET)
+    public ResponseEntity<Product> getById(@PathVariable("productId") String id){
+        Product product = repository.findOne(id);
+        if(Objects.isNull(product)){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(product, HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/products/{productId}/prices", method = RequestMethod.GET)
+    public ResponseEntity<Price> getPriceByProductId(@PathVariable("productId") String id){
+        Product product = repository.findOne(id);
+        if(Objects.isNull(product)){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(product.getPrice(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/products/{productId}/images", method = RequestMethod.GET)
+    public ResponseEntity<ProductImage> getImage(@PathVariable("productId") String id){
+        Product product = repository.findOne(id);
+        if(Objects.isNull(product)){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(new ProductImage(product.getImage()), HttpStatus.OK);
+    }
+
+
 }

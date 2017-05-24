@@ -27,11 +27,12 @@ public class DatabaseCreate implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
-        repository.save(readerJson());
+        repository.save(readerJson("classpath:database/database_celulares.json"));
+        repository.save(readerJson("classpath:database/database_iphone.json"));
     }
 
-    private List<Product> readerJson() throws IOException {
-        String json = IOUtils.toString(resourceLoader.getResource("classpath:database/database.json").getInputStream());
+    private List<Product> readerJson(String resource) throws IOException {
+        String json = IOUtils.toString(resourceLoader.getResource(resource).getInputStream());
         List<Product> products = parseAsListOf(Product.class, json);
         return products;
     }
