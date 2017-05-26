@@ -1,17 +1,15 @@
 package com.sensedia.apix;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import okhttp3.OkHttpClient;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import okhttp3.OkHttpClient;
 import springfox.documentation.swagger2.configuration.Swagger2DocumentationConfiguration;
 
 @SpringBootApplication
-@EnableAutoConfiguration
-@ComponentScan
 public class ApixProductsApplication {
 
 	public static void main(String[] args) {

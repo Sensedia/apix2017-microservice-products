@@ -3,17 +3,18 @@ package com.sensedia.apix.product;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import io.swagger.annotations.ApiModel;
-import org.hibernate.annotations.GenericGenerator;
 
 /**
  * Created by renanpetronilho on 23/04/17.
@@ -49,6 +50,10 @@ public class Product implements Serializable {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getProductId(){
+		return id;
 	}
 
 	public String getName() {

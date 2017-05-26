@@ -30,9 +30,6 @@ public class SwaggerConfig extends WebMvcConfigurerAdapter {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler(WEB_JAR_RESOURCE_PATTERNS)
 				.addResourceLocations(WEB_JAR_RESOURCE_LOCATION).setCachePeriod(0);
-
-//		registry.addResourceHandler("swagger-ui.html")
-//				.addResourceLocations(WEB_JAR_RESOURCE_LOCATION);
 	}
 
 	@Bean
