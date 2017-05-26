@@ -1,14 +1,3 @@
 server:
   port: 5050
   context-path: /apix
-spring:
-  jpa:
-    properties:
-      hibernate:
-        show_sql: false
-        format_sql: false
-#logging:
-#  level:
-#    org:
-#      hibernate:
-#        type: trace
