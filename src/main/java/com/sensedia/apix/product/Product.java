@@ -12,6 +12,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -20,6 +21,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 @Table(name = "T_PRODUCT")
 @JsonIgnoreProperties
+@ApiModel(description = "Modelo de exibir informações de produtos.")
 public class Product implements Serializable {
 
 	@Id

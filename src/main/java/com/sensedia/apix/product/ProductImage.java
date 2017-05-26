@@ -1,10 +1,13 @@
 package com.sensedia.apix.product;
 
+import io.swagger.annotations.ApiModel;
+
 import java.io.Serializable;
 
 /**
  * Created by renanpetronilho on 24/05/17.
  */
+@ApiModel(description = "Modelo da imagem de produtos.")
 public class ProductImage implements Serializable {
 
 	private String data;

@@ -1,13 +1,14 @@
 package com.sensedia.apix.notification;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import io.swagger.annotations.ApiModel;
+import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * Created by renanpetronilho on 24/05/17.
@@ -15,6 +16,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "T_NOTIFICATION")
 @JsonIgnoreProperties
+@ApiModel(description = "Modelo para criar notificações de intenção de compra.")
 public class Notification {
 
 	@Id
